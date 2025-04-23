@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Walking the World</title>
+  <style>
+   body {
+  margin: 0;
+  background-color: #201C54;
+  font-family: 'Arial', sans-serif;
+  scroll-behavior: smooth;
+}
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      padding: 60px 40px;
+    }
+
+    h1 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 48px;
+      margin: 0;
+    }
+
+    p.subtitle {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: black;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      text-decoration: none;
+      margin-bottom: 40px;
+    }
+
+    img.hero {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 40px 0 20px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>WALKING THE WORLD</h1>
+    <h2>COMING SOON: Istambul</h2>
+    <p class="subtitle">No pierdas el paso en nuestra próxima aventura. Local, auténtico e inolvidable</p>
+    <a href="#days-left" class="btn">Discover more</a>
+
+    <img class="hero" src="https://i0.wp.com/www.exoticca.com/wp-content/uploads/2019/10/TOP-6-de-las-mezquitas-de-Estambul-mas-espectaculares-e-importantes-1.jpg?fit=1000%2C667&ssl=1" alt="Hero image"> 
+
+    <div class="section-title">you will find here</div>
+    <div class="cards">
+      <div class="card">
+        <img src="https://www.mochilerosviajeros.com/wp-content/uploads/2020/05/CONSEJOS-MOCHILEROS.jpg" width="230" height="180" alt="">
+        <h3>Plan your solo trip</h3>
+        <p>The best advices about a solo trip, based in the real and recent experience. How enjoy the adventure safety and to make network with other travellers." </p>
+      </div>
+      <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/35/51/ce/hotel.jpg?w=1200&h=-1&s=1" width="230" height="180" alt="">
+        <h3>Find the rest that you deserve</h3>
+        <p>stay at the place of your dreams, with the relax together you couple or your friends. Don't let nothing to the luck.</p>
+      </div>
+      <div class="card">
+        <img src="https://i0.wp.com/aldiaargentina.microjuris.com/wp-content/uploads/2024/01/futbol-j-3.jpg?resize=1000%2C667&ssl=1" width="230" height="180" alt="">
+        <h3>Reach that so hope dream</h3>
+        <p>Do you have a dream event? A sport final match or the concert of your life could be waiting for you, mixed with a great trip for have the complete experience.</p>
+      </div>
+    </div>
+
+    <div id="days-left" class="section-title">30 days left..</div>
+    <div class="cards">
+      <div class="card">
+        <img src="https://t3.ftcdn.net/jpg/01/00/96/18/360_F_100961834_7NvRPyuVB1wDkXzfhawf9CBEPde7tuEr.jpg" alt="">
+        <a href="page2_v2.html" class="btn" style="display: inline-block; margin-top: 10px;">Know more</a>
+        <p>To know more about our next trip on spring 2025. We go to visit Istambul, Athens an Napoli during an amazing adventure for 3 weeks. In this experience we will mix long walking for the cities and moment of pleasure and rest with great views charged of history and beauty.</p>
+      </div>
+    </div>
+  </div>
+ <script>
+    document.querySelector('a[href="#days-left"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('days-left').scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Walking the World</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #201C54;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      padding: 60px 40px;
+    }
+
+    h1 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 48px;
+      margin: 0;
+    }
+
+    p.subtitle {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 40px;
+      background-color: black;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    /* SECCIÓN IMÁGENES + TEXTO INTERACTIVO */
+    .content-section {
+      display: flex;
+      gap: 40px;
+      margin-top: 50px;
+      align-items: flex-start;
+    }
+
+    .image-column {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .image-card {
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .image-card:hover {
+      transform: scale(1.02);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .text-column {
+      width: 55%;
+      position: sticky;
+      top: 20px;
+    }
+
+    .text-container {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .text-content {
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+
+    .text-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .text-content h3 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .text-content p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .text-content ul {
+      margin: 15px 0;
+      padding-left: 20px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .text-content li {
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    /* NUEVA SECCIÓN DE CONTACTO */
+    .contact-section {
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      padding: 30px;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .contact-info {
+      display: inline-block;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .contact-info div {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-info i {
+      margin-right: 10px;
+      color: #201C54;
+      width: 20px;
+      text-align: center;
+    }
+
+    .newsletter-form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .newsletter-form button {
+      background-color: #201C54;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+#contact-section {
+        scroll-margin-top: 20px; /* Esto crea un espacio de 20px arriba de la sección al hacer scroll */
+    }
+  </style>
+  <!-- Iconos de Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>OUR MEDITERRANEAN ROUTE 2025</h1>
+    <h2>May 22 - June 10</h2>
+    <p class="subtitle">Join us to visit three new countries during 18 days.</p>
+    <a href="#contact-section" class="btn">Contact us now!</a>
+
+    <!-- SECCIÓN INTERACTIVA -->
+    <div class="content-section">
+      <!-- Columna de imágenes (izquierda) -->
+      <div class="image-column">
+        <div class="image-card" onclick="showText(1)">
+          <img src="C:\Users\djorquerad\OneDrive - Fundación Integra\Escritorio\Proyectos TI\Aprendizaje\Flag1.webp" alt="Bandera 1">
+        </div>
+        <div class="image-card" onclick="showText(2)">
+          <img src="C:\Users\djorquerad\OneDrive - Fundación Integra\Escritorio\Proyectos TI\Aprendizaje\Flag2.png" alt="Bandera 2">
+        </div>
+        <div class="image-card" onclick="showText(3)">
+          <img src="C:\Users\djorquerad\OneDrive - Fundación Integra\Escritorio\Proyectos TI\Aprendizaje\Flag 3.png" alt="Bandera 3">
+        </div>
+      </div>
+
+      <!-- Columna de texto (derecha) -->
+      <div class="text-column">
+        <div class="text-container">
+          <!-- Textos que cambiarán -->
+          <div id="text1" class="text-content active">
+            <h3>Istambul</h3>
+            <p>This places are waiting for you!</p>
+            <ul>
+              <li><strong>Hagia Sophia (Ayasofya)</strong> – A stunning architectural marvel, originally a Byzantine church, later a mosque, and now a museum (though it has been reconverted into a mosque). Famous for its massive dome, intricate mosaics, and rich history.</li>
+              <li><strong>Blue Mosque (Sultanahmet Camii)</strong> – Known for its striking blue İznik tiles and six minarets, this 17th-century mosque is an iconic symbol of Istanbul.</li>
+              <li><strong>Topkapi Palace (Topkapı Sarayı)</strong> – The former residence of Ottoman sultans, featuring lavish courtyards, the Harem, and treasures like the Prophet Muhammad's relics.</li>
+              <li><strong>Grand Bazaar (Kapalıçarşı)</strong> – One of the world's oldest and largest covered markets, with over 4,000 shops selling jewelry, carpets, spices, and souvenirs.</li>
+              <li><strong>Basilica Cistern (Yerebatan Sarnıcı)</strong> – A mysterious underground water reservoir from the Byzantine era, featuring Medusa-head columns and atmospheric lighting.</li>
+            </ul>
+          </div>
+          
+          <div id="text2" class="text-content">
+            <h3>Athens</h3>
+            <p>This ancient history hope for you visit!</p>
+            <ul>
+              <li><strong>Acropolis of Athens</strong> – The iconic ancient citadel perched on a rocky hill, featuring the Parthenon, Erechtheion, and breathtaking views of the city. A UNESCO World Heritage Site.</li>
+              <li><strong>Acropolis Museum</strong> – A modern museum housing artifacts from the Acropolis, including sculptures, friezes, and the original Caryatids.</li>
+              <li><strong>Ancient Agora of Athens</strong> – The heart of classical Athens, home to the well-preserved Temple of Hephaestus and Stoa of Attalos, a reconstructed ancient shopping arcade.</li>
+              <li><strong>Plaka Neighborhood</strong> – Athens' oldest district, known for its charming narrow streets, neoclassical houses, souvenir shops, and traditional tavernas.</li>
+              <li><strong>Temple of Olympian Zeus (Olympieion)</strong> – One of the largest temples in the ancient world, with towering Corinthian columns dedicated to Zeus.</li>
+            </ul>
+          </div>
+          
+          <div id="text3" class="text-content">
+            <h3>Napoli</h3>
+            <p>Discover the vibrant life for the skinny streets</p>
+            <ul>
+              <li><strong>Pompeii Archaeological Park</strong> – The legendary Roman city buried by Mount Vesuvius in 79 AD, featuring preserved ruins, frescoes, and plaster casts of victims. A UNESCO World Heritage Site.</li>
+              <li><strong>Naples National Archaeological Museum (MANN)</strong> – Houses one of the world's finest collections of Greco-Roman artifacts, including treasures from Pompeii and Herculaneum.</li>
+              <li><strong>Historic Center of Naples (Centro Storico)</strong> – A vibrant, UNESCO-listed district with narrow alleys, Baroque churches (like Naples Cathedral), and the famous Via San Gregorio Armeno (Christmas Alley).</li>
+              <li><strong>Castel dell'Ovo</strong> – Naples' oldest seaside castle, perched on a tiny island in the Gulf of Naples, offering panoramic views and linked to ancient legends.</li>
+              <li><strong>Royal Palace of Naples (Palazzo Reale)</strong> – A 17th-century palace showcasing opulent royal apartments, a grand staircase, and the Teatro di San Carlo, Italy's oldest opera house.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NUEVA SECCIÓN DE CONTACTO -->
+    <div id="contact-section" class="contact-section">
+      <h3>Contact Information</h3>
+      
+      <div class="contact-info">
+        <div>
+          <i class="fas fa-envelope"></i>
+          <span>contact@walkingtheworld.com</span>
+        </div>
+        <div>
+          <i class="fas fa-phone"></i>
+          <span>+56 9 1234 5678</span>
+        </div>
+        <div>
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Santiago, Chile</span>
+        </div>
+      </div>
+      
+      <div class="newsletter-form">
+        <h4>Stay Updated</h4>
+        <p>Leave your email to receive travel updates</p>
+        <input type="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showText(num) {
+      document.querySelectorAll('.text-content').forEach(text => {
+        text.classList.remove('active');
+      });
+      document.getElementById(`text${num}`).classList.add('active');
+    }
+  </script>
+<script>
+  // Scroll suave personalizado
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if(target) {
+              const targetPos = target.getBoundingClientRect().top + window.pageYOffset;
+              const startPos = window.pageYOffset;
+              const distance = targetPos - startPos;
+              const duration = 1200; // 1200ms = 1.2 segundos (ajústalo)
+              let startTime = null;
+              
+              const animation = (currentTime) => {
+                  if(!startTime) startTime = currentTime;
+                  const elapsed = currentTime - startTime;
+                  const progress = Math.min(elapsed/duration, 1);
+                  window.scrollTo(0, startPos + distance * progress);
+                  if(progress < 1) requestAnimationFrame(animation);
+              };
+              
+              requestAnimationFrame(animation);
+          }
+      });
+  });
+  </script>
+</body>
+</html>
