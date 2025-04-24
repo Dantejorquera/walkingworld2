@@ -15,6 +15,7 @@
       margin: 0 auto;
       background: white;
       padding: 60px 40px;
+      position: relative; /* Añadido para que el botón se posicione correctamente */
     }
 
     h1 {
@@ -46,6 +47,26 @@
       border-radius: 4px;
       font-size: 16px;
       text-decoration: none;
+    }
+
+    /* Estilos del botón "Back to the Home" */
+    .back-home-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: black;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+      font-family: 'Arial', sans-serif;
+      transition: background-color 0.3s;
+      z-index: 1000;
+    }
+
+    .back-home-btn:hover {
+      background-color: #333;
     }
 
     /* SECCIÓN IMÁGENES + TEXTO INTERACTIVO */
@@ -183,8 +204,36 @@
       cursor: pointer;
       font-size: 16px;
     }
-#contact-section {
-        scroll-margin-top: 20px; /* Esto crea un espacio de 20px arriba de la sección al hacer scroll */
+
+    #contact-section {
+      scroll-margin-top: 20px;
+    }
+
+    /* Media Queries para responsive */
+    @media (max-width: 768px) {
+      .back-home-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+        top: 15px;
+        right: 15px;
+      }
+
+      h1 {
+        font-size: 20px;
+        margin-top: 40px; /* Espacio para el botón */
+      }
+
+      h2 {
+        font-size: 36px;
+      }
+
+      .content-section {
+        flex-direction: column;
+      }
+
+      .image-column, .text-column {
+        width: 100%;
+      }
     }
   </style>
   <!-- Iconos de Font Awesome -->
@@ -193,6 +242,7 @@
 
 <body>
   <div class="container">
+    <a href="index.html" class="back-home-btn">Back to the Home</a>
     <h1>OUR MEDITERRANEAN ROUTE 2025</h1>
     <h2>May 22 - June 10</h2>
     <p class="subtitle">Join us to visit three new countries during 18 days.</p>
@@ -203,13 +253,13 @@
       <!-- Columna de imágenes (izquierda) -->
       <div class="image-column">
         <div class="image-card" onclick="showText(1)">
-          <img src="C:\Users\djorquerad\OneDrive - Fundación Integra\Escritorio\Proyectos TI\Aprendizaje\Flag1.webp" alt="Bandera 1">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg">
         </div>
         <div class="image-card" onclick="showText(2)">
-          <img src="C:\Users\djorquerad\OneDrive - Fundación Integra\Escritorio\Proyectos TI\Aprendizaje\Flag2.png" alt="Bandera 2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg">
         </div>
         <div class="image-card" onclick="showText(3)">
-          <img src="C:\Users\djorquerad\OneDrive - Fundación Integra\Escritorio\Proyectos TI\Aprendizaje\Flag 3.png" alt="Bandera 3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg">
         </div>
       </div>
 
@@ -284,6 +334,121 @@
     </div>
   </div>
 
+<style>
+  /* COLLAGE DE IMÁGENES */
+  .collage-section {
+    margin: 60px auto 0;
+    text-align: center;
+    max-width: 1000px; /* Mismo ancho que el contenedor principal */
+    padding: 0 40px; /* Mismo padding que el container */
+  }
+
+  .collage-section h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+
+  .collage-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 200px);
+    gap: 10px;
+  }
+
+  .collage-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+
+  .collage-item:hover {
+    transform: scale(1.02);
+  }
+
+  .collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Posicionamiento específico para cada imagen */
+  .collage-item:nth-child(1) {
+    grid-column: span 4;
+    grid-row: span 1;
+  }
+  .collage-item:nth-child(2) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .collage-item:nth-child(3) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .collage-item:nth-child(4) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .collage-item:nth-child(5) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  /* Responsive para tablets */
+  @media (max-width: 900px) {
+    .collage-grid {
+      grid-template-rows: repeat(2, 180px);
+    }
+  }
+
+  /* Responsive para móviles */
+  @media (max-width: 768px) {
+    .collage-section {
+      padding: 0 20px;
+    }
+    
+    .collage-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, 150px);
+      gap: 15px;
+    }
+    
+    .collage-item {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+    }
+    
+    .collage-section h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+  }
+</style>
+
+<div class="collage-section">
+  <h3>GALLERY OF OUR JOURNEY</h3>
+  <div class="collage-grid">
+    <div class="collage-item">
+      <img src="https://www.barcelo.com/guia-turismo/wp-content/uploads/2024/09/ok-plaza-taksim.jpg">
+    </div>
+    <div class="collage-item">
+      <img src="https://images2.bovpg.net/r/back/es/sale/e491fb2405d0d3.jpg">
+    </div>
+    <div class="collage-item">
+      <img src="https://www.hola.com/horizon/square/d4a4acf4b090-atenas-partenon-acropolis-t.jpg?im=Resize=(640),type=downsize">
+    </div>
+    <div class="collage-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlw74K29klqoS-f9VyyQ0ZD821OiNBUEtgOw&s">
+    </div>
+    <div class="collage-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/330px-Colosseo_2020.jpg">
+    </div>
+  </div>
+</div>
+
   <script>
     function showText(num) {
       document.querySelectorAll('.text-content').forEach(text => {
@@ -292,31 +457,31 @@
       document.getElementById(`text${num}`).classList.add('active');
     }
   </script>
-<script>
-  // Scroll suave personalizado
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  <script>
+    // Scroll suave personalizado
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if(target) {
-              const targetPos = target.getBoundingClientRect().top + window.pageYOffset;
-              const startPos = window.pageYOffset;
-              const distance = targetPos - startPos;
-              const duration = 1200; // 1200ms = 1.2 segundos (ajústalo)
-              let startTime = null;
-              
-              const animation = (currentTime) => {
-                  if(!startTime) startTime = currentTime;
-                  const elapsed = currentTime - startTime;
-                  const progress = Math.min(elapsed/duration, 1);
-                  window.scrollTo(0, startPos + distance * progress);
-                  if(progress < 1) requestAnimationFrame(animation);
-              };
-              
-              requestAnimationFrame(animation);
-          }
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          const targetPos = target.getBoundingClientRect().top + window.pageYOffset;
+          const startPos = window.pageYOffset;
+          const distance = targetPos - startPos;
+          const duration = 1200;
+          let startTime = null;
+          
+          const animation = (currentTime) => {
+            if(!startTime) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed/duration, 1);
+            window.scrollTo(0, startPos + distance * progress);
+            if(progress < 1) requestAnimationFrame(animation);
+          };
+          
+          requestAnimationFrame(animation);
+        }
       });
-  });
+    });
   </script>
 </body>
 </html>
