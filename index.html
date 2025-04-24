@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <title>Walking the World</title>
   <style>
-   body {
-  margin: 0;
-  background-color: #201C54;
-  font-family: 'Arial', sans-serif;
-  scroll-behavior: smooth;
-}
+    body {
+      margin: 0;
+      background-color: #201C54;
+      font-family: 'Arial', sans-serif;
+      scroll-behavior: smooth;
+    }
 
     .container {
       max-width: 1000px;
@@ -85,6 +85,44 @@
       font-size: 14px;
       color: #555;
     }
+
+    /* Estilos para el nuevo collage 3x3 (solo estas imágenes usarán Cloudinary) */
+    .collage-section {
+      margin-top: 60px;
+    }
+    
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s;
+  aspect-ratio: 16/9; /* Cambiado de 1/1 (cuadrado) a 9/16 (rectangular vertical) */
+}
+
+    .collage img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .collage {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .collage {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -94,22 +132,24 @@
     <p class="subtitle">No pierdas el paso en nuestra próxima aventura. Local, auténtico e inolvidable</p>
     <a href="#days-left" class="btn">Discover more</a>
 
+    <!-- Imagen hero original (URL externa) -->
     <img class="hero" src="https://i0.wp.com/www.exoticca.com/wp-content/uploads/2019/10/TOP-6-de-las-mezquitas-de-Estambul-mas-espectaculares-e-importantes-1.jpg?fit=1000%2C667&ssl=1" alt="Hero image"> 
 
     <div class="section-title">you will find here</div>
     <div class="cards">
       <div class="card">
-        <img src="https://www.mochilerosviajeros.com/wp-content/uploads/2020/05/CONSEJOS-MOCHILEROS.jpg" width="230" height="180" alt="">
+        <!-- Imágenes originales (URLs externas) -->
+        <img src="https://www.mochilerosviajeros.com/wp-content/uploads/2020/05/CONSEJOS-MOCHILEROS.jpg" width="230" height="180" alt="Mochileros">
         <h3>Plan your solo trip</h3>
         <p>The best advices about a solo trip, based in the real and recent experience. How enjoy the adventure safety and to make network with other travellers." </p>
       </div>
       <div class="card">
-        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/35/51/ce/hotel.jpg?w=1200&h=-1&s=1" width="230" height="180" alt="">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/35/51/ce/hotel.jpg?w=1200&h=-1&s=1" width="230" height="180" alt="Hotel">
         <h3>Find the rest that you deserve</h3>
         <p>stay at the place of your dreams, with the relax together you couple or your friends. Don't let nothing to the luck.</p>
       </div>
       <div class="card">
-        <img src="https://i0.wp.com/aldiaargentina.microjuris.com/wp-content/uploads/2024/01/futbol-j-3.jpg?resize=1000%2C667&ssl=1" width="230" height="180" alt="">
+        <img src="https://i0.wp.com/aldiaargentina.microjuris.com/wp-content/uploads/2024/01/futbol-j-3.jpg?resize=1000%2C667&ssl=1" width="230" height="180" alt="Fútbol">
         <h3>Reach that so hope dream</h3>
         <p>Do you have a dream event? A sport final match or the concert of your life could be waiting for you, mixed with a great trip for have the complete experience.</p>
       </div>
@@ -118,13 +158,31 @@
     <div id="days-left" class="section-title">30 days left..</div>
     <div class="cards">
       <div class="card">
-        <img src="https://t3.ftcdn.net/jpg/01/00/96/18/360_F_100961834_7NvRPyuVB1wDkXzfhawf9CBEPde7tuEr.jpg" alt="">
+        <img src="https://t3.ftcdn.net/jpg/01/00/96/18/360_F_100961834_7NvRPyuVB1wDkXzfhawf9CBEPde7tuEr.jpg" alt="Aventura">
         <a href="page2_v2.html" class="btn" style="display: inline-block; margin-top: 10px;">Know more</a>
         <p>To know more about our next trip on spring 2025. We go to visit Istambul, Athens an Napoli during an amazing adventure for 3 weeks. In this experience we will mix long walking for the cities and moment of pleasure and rest with great views charged of history and beauty.</p>
       </div>
     </div>
+
+    <!-- Nuevo collage 3x3 (SOLO aquí usamos Cloudinary) -->
+    <div class="collage-section">
+      <div class="section-title">Gallery: Moments from our travels</div>
+      <div class="collage">
+        <!-- Reemplaza estas URLs con tus imágenes en Cloudinary -->
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513439/SP_vde9rd.jpg">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513439/IMG_20240407_171140_fyo4np.jpg">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513436/IMG_20240401_193557_ngcgkj.jpg">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513431/IMG_20240320_122936_yelhqk.jpg">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513430/IMG_5247_o9ujwl.jpg">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513430/IMG_20230321_111552_urdc9e.jpg">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513430/IMG_20230319_115454_bnc7vf.jpg">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513427/IMG_20220222_180418_ytikpj.jpg">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513426/IMG_20230305_095242_ib83lg.jpg">
+      </div>
+    </div>
   </div>
- <script>
+
+  <script>
     document.querySelector('a[href="#days-left"]').addEventListener('click', function(e) {
       e.preventDefault();
       document.getElementById('days-left').scrollIntoView({
@@ -133,5 +191,6 @@
     });
   </script>
 </body>
+</html>
 </html>
 
