@@ -57,7 +57,7 @@
     .section-title {
       font-size: 22px;
       font-weight: bold;
-      margin: 40px 0 20px;
+      margin: 20px 0 5px;
     }
 
     .cards {
@@ -84,11 +84,12 @@
     .card p {
       font-size: 14px;
       color: #555;
+      margin-bottom: 10px;
     }
 
-    /* Estilos para el nuevo collage 3x3 (solo estas imágenes usarán Cloudinary) */
+    /* Estilos para el collage */
     .collage-section {
-      margin-top: 60px;
+      margin-top: 20px;
     }
     
     .collage {
@@ -99,17 +100,71 @@
     }
 
     .collage img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s;
-  aspect-ratio: 16/9; /* Cambiado de 1/1 (cuadrado) a 9/16 (rectangular vertical) */
-}
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s;
+      aspect-ratio: 16/9;
+      cursor: pointer;
+    }
 
     .collage img:hover {
       transform: scale(1.03);
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Estilos para el lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      position: relative;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 80vh;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      animation: zoomIn 0.3s;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); }
+      to { transform: scale(1); }
     }
 
     @media (max-width: 768px) {
@@ -122,6 +177,10 @@
       .collage {
         grid-template-columns: 1fr;
       }
+      
+      .lightbox img {
+        max-height: 60vh;
+      }
     }
   </style>
 </head>
@@ -132,13 +191,11 @@
     <p class="subtitle">No pierdas el paso en nuestra próxima aventura. Local, auténtico e inolvidable</p>
     <a href="#days-left" class="btn">Discover more</a>
 
-    <!-- Imagen hero original (URL externa) -->
     <img class="hero" src="https://i0.wp.com/www.exoticca.com/wp-content/uploads/2019/10/TOP-6-de-las-mezquitas-de-Estambul-mas-espectaculares-e-importantes-1.jpg?fit=1000%2C667&ssl=1" alt="Hero image"> 
 
     <div class="section-title">you will find here</div>
     <div class="cards">
       <div class="card">
-        <!-- Imágenes originales (URLs externas) -->
         <img src="https://www.mochilerosviajeros.com/wp-content/uploads/2020/05/CONSEJOS-MOCHILEROS.jpg" width="230" height="180" alt="Mochileros">
         <h3>Plan your solo trip</h3>
         <p>The best advices about a solo trip, based in the real and recent experience. How enjoy the adventure safety and to make network with other travellers." </p>
@@ -164,30 +221,73 @@
       </div>
     </div>
 
-    <!-- Nuevo collage 3x3 (SOLO aquí usamos Cloudinary) -->
+    <!-- Nuevo collage 3x3 -->
     <div class="collage-section">
       <div class="section-title">Gallery: Moments from our travels</div>
       <div class="collage">
-        <!-- Reemplaza estas URLs con tus imágenes en Cloudinary -->
-        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513439/SP_vde9rd.jpg">
-        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513439/IMG_20240407_171140_fyo4np.jpg">
-        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513436/IMG_20240401_193557_ngcgkj.jpg">
-        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513431/IMG_20240320_122936_yelhqk.jpg">
-        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513430/IMG_5247_o9ujwl.jpg">
-        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513430/IMG_20230321_111552_urdc9e.jpg">
-        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513430/IMG_20230319_115454_bnc7vf.jpg">
-        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513427/IMG_20220222_180418_ytikpj.jpg">
-        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513426/IMG_20230305_095242_ib83lg.jpg">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513439/SP_vde9rd.jpg" alt="Momento de viaje 1">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513439/IMG_20240407_171140_fyo4np.jpg" alt="Momento de viaje 2">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513436/IMG_20240401_193557_ngcgkj.jpg" alt="Momento de viaje 3">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513431/IMG_20240320_122936_yelhqk.jpg" alt="Momento de viaje 4">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513430/IMG_5247_o9ujwl.jpg" alt="Momento de viaje 5">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513430/IMG_20230321_111552_urdc9e.jpg" alt="Momento de viaje 6">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513430/IMG_20230319_115454_bnc7vf.jpg" alt="Momento de viaje 7">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513427/IMG_20220222_180418_ytikpj.jpg" alt="Momento de viaje 8">
+        <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513426/IMG_20230305_095242_ib83lg.jpg" alt="Momento de viaje 9">
       </div>
     </div>
   </div>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <span class="close-btn">&times;</span>
+      <img src="" alt="Imagen ampliada">
+    </div>
+  </div>
+
   <script>
+    // Smooth scrolling
     document.querySelector('a[href="#days-left"]').addEventListener('click', function(e) {
       e.preventDefault();
       document.getElementById('days-left').scrollIntoView({
         behavior: 'smooth'
       });
+    });
+
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('.close-btn');
+
+    document.querySelectorAll('.collage img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Bloquear scroll
+      });
+    });
+
+    // Cerrar lightbox
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
     });
   </script>
 </body>
