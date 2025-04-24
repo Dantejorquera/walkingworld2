@@ -87,7 +87,6 @@
       margin-bottom: 10px;
     }
 
-    /* Estilos para el collage */
     .collage-section {
       margin-top: 20px;
     }
@@ -157,6 +156,42 @@
       cursor: pointer;
     }
 
+    /* Estilos para la navegación */
+    .lightbox-nav {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      font-size: 30px;
+      user-select: none;
+      transition: opacity 0.3s;
+      opacity: 0.7;
+      z-index: 1001;
+    }
+
+    .lightbox-nav:hover {
+      opacity: 1;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .lightbox-prev {
+      left: 0;
+    }
+
+    .lightbox-next {
+      right: 0;
+    }
+
+    .lightbox-arrow {
+      font-size: 40px;
+      font-weight: bold;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -180,6 +215,14 @@
       
       .lightbox img {
         max-height: 60vh;
+      }
+      
+      .lightbox-nav {
+        width: 30px;
+      }
+      
+      .lightbox-arrow {
+        font-size: 30px;
       }
     }
   </style>
@@ -238,11 +281,17 @@
     </div>
   </div>
 
-  <!-- Lightbox -->
+  <!-- Lightbox con navegación -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
       <span class="close-btn">&times;</span>
+      <div class="lightbox-nav lightbox-prev">
+        <span class="lightbox-arrow">‹</span>
+      </div>
       <img src="" alt="Imagen ampliada">
+      <div class="lightbox-nav lightbox-next">
+        <span class="lightbox-arrow">›</span>
+      </div>
     </div>
   </div>
 
@@ -259,13 +308,25 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = lightbox.querySelector('img');
     const closeBtn = lightbox.querySelector('.close-btn');
+    const images = Array.from(document.querySelectorAll('.collage img'));
+    let currentIndex = 0;
 
-    document.querySelectorAll('.collage img').forEach(img => {
+    // Función para mostrar imagen específica
+    function showImage(index) {
+      if (index >= 0 && index < images.length) {
+        currentIndex = index;
+        lightboxImg.src = images[currentIndex].src;
+        lightboxImg.alt = images[currentIndex].alt;
+      }
+    }
+
+    // Abrir lightbox al hacer clic en imagen
+    images.forEach((img, index) => {
       img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
+        currentIndex = index;
+        showImage(currentIndex);
         lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Bloquear scroll
+        document.body.style.overflow = 'hidden';
       });
     });
 
@@ -282,15 +343,31 @@
       }
     });
 
-    // Cerrar con ESC
+    // Navegación con flechas del teclado
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      if (!lightbox.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') {
         lightbox.classList.remove('active');
         document.body.style.overflow = 'auto';
+      } else if (e.key === 'ArrowRight') {
+        showImage((currentIndex + 1) % images.length);
+      } else if (e.key === 'ArrowLeft') {
+        showImage((currentIndex - 1 + images.length) % images.length);
       }
+    });
+
+    // Navegación con flechas visuales
+    document.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+      e.stopPropagation();
+      showImage((currentIndex - 1 + images.length) % images.length);
+    });
+
+    document.querySelector('.lightbox-next').addEventListener('click', (e) => {
+      e.stopPropagation();
+      showImage((currentIndex + 1) % images.length);
     });
   </script>
 </body>
-</html>
 </html>
 
