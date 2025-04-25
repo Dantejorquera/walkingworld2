@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Walking the World</title>
   <style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
     body {
       margin: 0;
       background-color: #201C54;
@@ -225,8 +226,57 @@
         font-size: 30px;
       }
     }
+    /* Estilos para banners */
+.section-banner {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: #201C54;
+  color: white;
+  padding: 12px 25px;
+  display: block; /* Cambiado de inline-block a block para ocupar todo el ancho */
+  margin: 20px auto; /* Centrado horizontal con margen automático */
+  border: 2px solid #201C54;
+  font-size: 24px;
+  border-radius: 4px;
+  text-align: center; /* Centrado del texto dentro del banner */
+  width: 100%; /* Ocupa el 100% del contenedor padre */
+  max-width: 1000px; /* Mismo ancho que la galería (ajusta según necesidad) */
+  box-sizing: border-box; /* Incluye padding y border en el ancho total */
+}
+    /* Ajuste específico para el botón "Know more" y su párrafo */
+#days-left + .cards .btn {
+  margin-bottom: 10px; /* Reduce el espacio inferior del botón (antes 40px) */
+}
+
+#days-left + .cards .card p {
+  margin-top: 0; /* Elimina el margen superior del párrafo */
+}
+
+  /* Galería grande (2x2) */
+.collage-large {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.collage-large img {
+  width: 100%;
+  height: 300px; /* Altura fija para uniformidad */
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.collage-large img:hover {
+  transform: scale(1.03);
+}
+
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>WALKING THE WORLD</h1>
@@ -236,7 +286,7 @@
 
     <img class="hero" src="https://i0.wp.com/www.exoticca.com/wp-content/uploads/2019/10/TOP-6-de-las-mezquitas-de-Estambul-mas-espectaculares-e-importantes-1.jpg?fit=1000%2C667&ssl=1" alt="Hero image"> 
 
-    <div class="section-title">you will find here</div>
+    <div class="section-banner">YOU WILL FIND HERE</div>
     <div class="cards">
       <div class="card">
         <img src="https://www.mochilerosviajeros.com/wp-content/uploads/2020/05/CONSEJOS-MOCHILEROS.jpg" width="230" height="180" alt="Mochileros">
@@ -255,18 +305,29 @@
       </div>
     </div>
 
-    <div id="days-left" class="section-title">30 days left..</div>
+    <div id="days-left" class="section-banner urgent">30 DAYS LEFT</div>
     <div class="cards">
       <div class="card">
-        <img src="https://t3.ftcdn.net/jpg/01/00/96/18/360_F_100961834_7NvRPyuVB1wDkXzfhawf9CBEPde7tuEr.jpg" alt="Aventura">
+        <img src="https://t3.ftcdn.net/jpg/01/00/96/18/1000_F_100961834_7NvRPyuVB1wDkXzfhawf9CBEPde7tuEr.jpg">
         <a href="page2_v2.html" class="btn" style="display: inline-block; margin-top: 10px;">Know more</a>
         <p>To know more about our next trip on spring 2025. We go to visit Istambul, Athens an Napoli during an amazing adventure for 3 weeks. In this experience we will mix long walking for the cities and moment of pleasure and rest with great views charged of history and beauty.</p>
       </div>
     </div>
 
+    <!-- Nueva sección: Cartagena 2025 -->
+<div class="collage-section">
+  <div class="section-banner">OUR LAST ADVENTURE: CARTAGENA 2025</div>
+  <div class="collage-large">
+    <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745590127/IMG_20250319_134852_y0hxcy.jpg">
+    <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745590131/IMG_20250323_210511_dff5pm.jpg">
+    <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745590128/IMG_20250321_151537_fd34bi.jpg">
+    <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745590127/IMG_20250319_165023_ghfgau.jpg">
+  </div>
+</div>
+
     <!-- Nuevo collage 3x3 -->
     <div class="collage-section">
-      <div class="section-title">Gallery: Moments from our travels</div>
+      <div class="section-banner">OLD STORIES</div>
       <div class="collage">
         <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513439/SP_vde9rd.jpg" alt="Momento de viaje 1">
         <img src="https://res.cloudinary.com/djxuocwef/image/upload/v1745513439/IMG_20240407_171140_fyo4np.jpg" alt="Momento de viaje 2">
@@ -308,7 +369,7 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = lightbox.querySelector('img');
     const closeBtn = lightbox.querySelector('.close-btn');
-    const images = Array.from(document.querySelectorAll('.collage img'));
+    const images = Array.from(document.querySelectorAll('.collage img, .collage-large img'));
     let currentIndex = 0;
 
     // Función para mostrar imagen específica
